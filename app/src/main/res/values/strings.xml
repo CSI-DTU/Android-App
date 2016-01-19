@@ -8,4 +8,15 @@
     <string name="contact_header">Contact : </string>
     <string name="contact_1">|||Contact 1|||</string>
     <string name="contact_2">|||Contact 2|||</string>
+    <string name="about_innova">INNOVA, the annual techno-management fest of Delhi Technological University (Formerly Delhi College of Engineering) was founded in 1994, under the Department of Mechanical and Production Engineering and Department of Civil and Environmental Engineering as a celebration of talent and creativity.
+
+The fest over the past 21 years has been a symposium of young minds from numerous colleges across the nation to participate in innovative events and inculcate new technicalities.
+
+Expanding its spectrum and including events of nearly each branch of engineering in its 22nd phase, INNOVA ’16 has adopted the theme “THINK. CREATE. CONQUER.” We aim to provide a platform to young budding engineers to think creatively, showcase their talent and display their skills in unexplored domains. INNOVA being an unequalled and incomparable extravaganza is a perfect dais where ideas and people mingle with each other.
+
+INNOVA’16 is anticipated to be a rejuvinating experience for students and associates alike.</string>
+
+    <string name="title_activity_fullscreen_gallery">FullscreenGallery</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 </resources>

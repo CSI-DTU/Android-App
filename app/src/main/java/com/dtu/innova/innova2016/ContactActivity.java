@@ -1,5 +1,4 @@
 package com.dtu.innova.innova2016;
-//AIzaSyD2VVDUv9MRShjTjVBu31vcxsugAoH3uLU
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -27,7 +26,6 @@ public class ContactActivity extends AppCompatActivity implements OnMapReadyCall
         googleMap.addMarker(new MarkerOptions()
                 .position(new LatLng(28.7499, 77.1170))
                 .title("Delhi Technological University"));
-        LatLngBounds bounds = new LatLngBounds.Builder().include(latLng).build();
         googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10));
     }
 }
