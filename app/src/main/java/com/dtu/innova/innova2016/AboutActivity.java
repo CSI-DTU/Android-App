@@ -5,7 +5,6 @@ import android.os.Bundle;
 import com.faradaj.blurbehind.BlurBehind;
 
 public class AboutActivity extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

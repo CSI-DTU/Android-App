@@ -23,12 +23,12 @@ import worldline.com.foldablelayout.FoldableLayout;
 
 public class EventsActivity extends AppCompatActivity {
     RecyclerView eventsRecycler;
-    public String[] headers = {"Structural Design Event", "Junk-ineers", "Bridge making Event", "Disaster Management",
+    public String[] headers = {"Structure-D", "Junk-ineers", "Sealink", "Disaster Management",
                                 "CAD Craft", "Robotics", "Dream City", "Contraption", "Find D Bug", "Panorama", "Guest Lectures",
-                                "Air Gliding Challenge", "Bizzeal"};
+                                "Air Gliding Challenge", "Bizzeal", "Deltech MUN"};
     public int[] headersImages = {R.drawable.a, R.drawable.b, R.drawable.c, R.drawable.d,
             R.drawable.e, R.drawable.f, R.drawable.g, R.drawable.h, R.drawable.i,
-            R.drawable.j, R.drawable.k, R.drawable.l, R.drawable.m};
+            R.drawable.j, R.drawable.k, R.drawable.l, R.drawable.m, R.drawable.n};
     public String[] details = {"The Structural Design event where the students are given an \n" +
             "opportunity of onsite architectural designing. Participants have \n" +
             "to tackle every problem which an architect would face.\n",
@@ -77,7 +77,10 @@ public class EventsActivity extends AppCompatActivity {
     "A magnificient platform for budding entrepreneurs to present\n" +
             "their B-plans corresponding to a given theme. The participating\n" +
             "teams need to pass through a series of hurdles in order to\n" +
-            "establish a company."};
+            "establish a company.",
+    "An academic simulation of United Nations committees where country delegations are " +
+            "reperesented by student individuals or groups. It involves intense " +
+            "discussion and critical analysis on international agendas and issues."};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
