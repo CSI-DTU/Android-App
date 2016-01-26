@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     tools:context="com.dtu.innova.innova2016.FullscreenGallery">
     <ImageView
+        android:scaleType="center"
         android:id="@+id/image_fullscreen"
         android:contentDescription="Fullscreen Image"
         android:layout_width="match_parent"

@@ -5,8 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <ImageView
+        android:scaleType="centerCrop"
         android:layout_weight="0.5"
-        style="@style/CardContent"
+        android:layout_margin="5dp"
         android:padding="5dp"
         android:id="@+id/imageView"
         android:layout_width="0dp"

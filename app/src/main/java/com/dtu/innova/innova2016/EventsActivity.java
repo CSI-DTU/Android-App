@@ -19,6 +19,8 @@ import java.util.Map;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import jp.wasabeef.recyclerview.adapters.ScaleInAnimationAdapter;
+import jp.wasabeef.recyclerview.adapters.SlideInBottomAnimationAdapter;
 import worldline.com.foldablelayout.FoldableLayout;
 
 public class EventsActivity extends AppCompatActivity {
@@ -87,6 +89,10 @@ public class EventsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_events);
         eventsRecycler = (RecyclerView) findViewById(R.id.events_recycler);
         CustomAdapter customAdapter = new CustomAdapter(headers, details, headersImages);
+        SlideInBottomAnimationAdapter adapter = new SlideInBottomAnimationAdapter(customAdapter);
+        adapter.setDuration(1000);
+        ScaleInAnimationAdapter adapter1 = new ScaleInAnimationAdapter(adapter);
+        adapter1.setDuration(1000);
         eventsRecycler.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         eventsRecycler.addItemDecoration(new RecyclerView.ItemDecoration() {
             @Override
@@ -95,7 +101,7 @@ public class EventsActivity extends AppCompatActivity {
                 outRect.bottom = getResources().getDimensionPixelSize(R.dimen.activity_vertical_margin);
             }
         });
-        eventsRecycler.setAdapter(customAdapter);
+        eventsRecycler.setAdapter(adapter1);
     }
     public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomViewHolder>{
         private Map<Integer, Boolean> mFoldStates = new HashMap<>();

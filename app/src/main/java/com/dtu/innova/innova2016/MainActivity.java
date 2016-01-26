@@ -9,7 +9,8 @@ import android.widget.ImageView;
 import com.faradaj.blurbehind.BlurBehind;
 import com.faradaj.blurbehind.OnBlurCompleteListener;
 import com.flaviofaria.kenburnsview.KenBurnsView;
-import com.flaviofaria.kenburnsview.Transition;
+import com.zys.brokenview.BrokenTouchListener;
+import com.zys.brokenview.BrokenView;
 
 public class MainActivity extends AppCompatActivity {
     KenBurnsView background;
@@ -20,8 +21,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        background = (KenBurnsView) findViewById(R.id.main_background);
-        background.pause();
+        /*background = (KenBurnsView) findViewById(R.id.main_background);
+        //background.pause();
+
         background.setTransitionListener(new KenBurnsView.TransitionListener() {
             @Override
             public void onTransitionStart(Transition transition) {
@@ -35,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
                 if (i == 4)
                     i = 0;
             }
-        });
+        });*/
         about = (ImageView) findViewById(R.id.about);
         gallery = (ImageView) findViewById(R.id.gallery);
         events = (ImageView) findViewById(R.id.events);

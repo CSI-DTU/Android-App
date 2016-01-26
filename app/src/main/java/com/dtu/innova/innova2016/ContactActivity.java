@@ -16,21 +16,29 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.zys.brokenview.BrokenCallback;
+import com.zys.brokenview.BrokenTouchListener;
+import com.zys.brokenview.BrokenView;
+
+import tyrantgit.explosionfield.ExplosionField;
 
 public class ContactActivity extends AppCompatActivity implements OnMapReadyCallback{
     MapFragment mapFragment;
     ImageView git, facebook, website;
     TextView phone, email;
+    ExplosionField explosionField;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact);
         mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+        explosionField = ExplosionField.attach2Window(this);
         git = (ImageView) findViewById(R.id.git_logo);
         git.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                explosionField.explode(v);
                 startActivity(new Intent(Intent.ACTION_VIEW).setData(
                         Uri.parse("https://github.com/asdzxc2/InnovaApp2016.git")));
             }
@@ -39,6 +47,7 @@ public class ContactActivity extends AppCompatActivity implements OnMapReadyCall
         facebook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                explosionField.explode(v);
                 startActivity(new Intent(Intent.ACTION_VIEW).setData(
                         Uri.parse("https://www.facebook.com/innovadtu/?fref=ts")));
             }
@@ -47,6 +56,7 @@ public class ContactActivity extends AppCompatActivity implements OnMapReadyCall
         website.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                explosionField.explode(v);
                 startActivity(new Intent(Intent.ACTION_VIEW).setData(
                         Uri.parse("http://www.innovafest.com/")));
             }
@@ -57,6 +67,7 @@ public class ContactActivity extends AppCompatActivity implements OnMapReadyCall
         phone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                explosionField.explode(v);
                 Intent intent = new Intent(Intent.ACTION_DIAL);
                 intent.setData(Uri.parse("tel:" + phone.getText().toString()));
                 startActivity(intent);
@@ -66,11 +77,15 @@ public class ContactActivity extends AppCompatActivity implements OnMapReadyCall
         email.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                explosionField.explode(v);
                 Intent emailIntent = new Intent(Intent.ACTION_SEND);
                 emailIntent.setData(Uri.parse("mailto:" + email.getText().toString()));
                 emailIntent.setType("text/plain");
                 emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{email.getText().toString()});
                 startActivity(emailIntent);
+                v.setScaleX(1);
+                v.setScaleY(1);
+                v.setAlpha(1);
             }
         });
     }
