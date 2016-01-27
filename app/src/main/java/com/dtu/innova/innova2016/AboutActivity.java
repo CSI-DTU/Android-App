@@ -4,6 +4,8 @@ import android.os.Bundle;
 
 import com.faradaj.blurbehind.BlurBehind;
 
+import andy.ayaseruri.lib.CircularRevealActivity;
+
 public class AboutActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {

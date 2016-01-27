@@ -20,6 +20,7 @@ import com.zys.brokenview.BrokenCallback;
 import com.zys.brokenview.BrokenTouchListener;
 import com.zys.brokenview.BrokenView;
 
+import andy.ayaseruri.lib.CircularRevealActivity;
 import tyrantgit.explosionfield.ExplosionField;
 
 public class ContactActivity extends AppCompatActivity implements OnMapReadyCallback{
@@ -33,6 +34,7 @@ public class ContactActivity extends AppCompatActivity implements OnMapReadyCall
         setContentView(R.layout.activity_contact);
         mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
         explosionField = ExplosionField.attach2Window(this);
         git = (ImageView) findViewById(R.id.git_logo);
         git.setOnClickListener(new View.OnClickListener() {

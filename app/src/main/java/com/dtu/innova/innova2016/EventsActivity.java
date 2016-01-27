@@ -17,6 +17,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
+import andy.ayaseruri.lib.CircularRevealActivity;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import jp.wasabeef.recyclerview.adapters.ScaleInAnimationAdapter;
@@ -90,9 +91,9 @@ public class EventsActivity extends AppCompatActivity {
         eventsRecycler = (RecyclerView) findViewById(R.id.events_recycler);
         CustomAdapter customAdapter = new CustomAdapter(headers, details, headersImages);
         SlideInBottomAnimationAdapter adapter = new SlideInBottomAnimationAdapter(customAdapter);
-        adapter.setDuration(1000);
+        adapter.setDuration(500);
         ScaleInAnimationAdapter adapter1 = new ScaleInAnimationAdapter(adapter);
-        adapter1.setDuration(1000);
+        adapter1.setDuration(500);
         eventsRecycler.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         eventsRecycler.addItemDecoration(new RecyclerView.ItemDecoration() {
             @Override

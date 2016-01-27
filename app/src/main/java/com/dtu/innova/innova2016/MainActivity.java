@@ -3,6 +3,8 @@ package com.dtu.innova.innova2016;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -17,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     ImageView about, gallery, events, contact;
     int[] backgrounds = {R.drawable.background2, R.drawable.background3, R.drawable.background4, R.drawable.background1};
     int i = 0;
+    int[] clickPoints = new int[2];
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,20 +61,32 @@ public class MainActivity extends AppCompatActivity {
         gallery.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), GalleryActivity.class));
+                Intent intent = new Intent(getApplicationContext(), GalleryActivity.class);
+                startActivity(intent);
+                //overridePendingTransition(0, 0);
             }
         });
         events.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), EventsActivity.class));
+                Intent intent = new Intent(getApplicationContext(), EventsActivity.class);
+                startActivity(intent);
+                //overridePendingTransition(0, 0);
             }
         });
         contact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), ContactActivity.class));
+                Intent intent = new Intent(getApplicationContext(), ContactActivity.class);
+                startActivity(intent);
+                //overridePendingTransition(0, 0);
             }
         });
+    }
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        clickPoints[0] = (int) ev.getX();
+        clickPoints[1] = (int) ev.getY();
+        return super.dispatchTouchEvent(ev);
     }
 }

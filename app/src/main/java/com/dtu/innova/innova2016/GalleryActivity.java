@@ -7,6 +7,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -14,6 +15,10 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.squareup.picasso.Picasso;
+
+import andy.ayaseruri.lib.CircularRevealActivity;
+import jp.wasabeef.recyclerview.adapters.SlideInRightAnimationAdapter;
+
 public class GalleryActivity extends AppCompatActivity {
     RecyclerView galleryView;
     int[] images = {R.drawable.a, R.drawable.b, R.drawable.c, R.drawable.d,
@@ -41,6 +46,8 @@ public class GalleryActivity extends AppCompatActivity {
         galleryView.setHasFixedSize(true);
         galleryView.setLayoutManager(new GridLayoutManager(getApplicationContext(), 2));
         adapter = new GalleryRecyclerAdapter(getApplicationContext(), images);
-        galleryView.setAdapter(adapter);
+        SlideInRightAnimationAdapter animationAdapter = new SlideInRightAnimationAdapter(adapter);
+        animationAdapter.setDuration(1000);
+        galleryView.setAdapter(animationAdapter);
     }
 }
