@@ -1,7 +1,9 @@
 package com.dtu.innova.innova2016;
+import android.animation.Animator;
 import android.content.Intent;
 import android.graphics.Paint;
 import android.net.Uri;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -21,6 +23,7 @@ import com.zys.brokenview.BrokenTouchListener;
 import com.zys.brokenview.BrokenView;
 
 import andy.ayaseruri.lib.CircularRevealActivity;
+import tyrantgit.explosionfield.ExplosionAnimator;
 import tyrantgit.explosionfield.ExplosionField;
 
 public class ContactActivity extends AppCompatActivity implements OnMapReadyCallback{
@@ -41,8 +44,14 @@ public class ContactActivity extends AppCompatActivity implements OnMapReadyCall
             @Override
             public void onClick(View v) {
                 explosionField.explode(v);
-                startActivity(new Intent(Intent.ACTION_VIEW).setData(
-                        Uri.parse("https://github.com/asdzxc2/InnovaApp2016.git")));
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        startActivity(new Intent(Intent.ACTION_VIEW).setData(
+                                Uri.parse("https://github.com/asdzxc2/InnovaApp2016.git")));
+                    }
+                }, 1000);
+
             }
         });
         facebook = (ImageView) findViewById(R.id.facebook_logo);
@@ -50,8 +59,14 @@ public class ContactActivity extends AppCompatActivity implements OnMapReadyCall
             @Override
             public void onClick(View v) {
                 explosionField.explode(v);
-                startActivity(new Intent(Intent.ACTION_VIEW).setData(
-                        Uri.parse("https://www.facebook.com/innovadtu/?fref=ts")));
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        startActivity(new Intent(Intent.ACTION_VIEW).setData(
+                                Uri.parse("https://www.facebook.com/innovadtu/?fref=ts")));
+                    }
+                }, 1000);
+
             }
         });
         website = (ImageView) findViewById(R.id.web_logo);
@@ -59,6 +74,13 @@ public class ContactActivity extends AppCompatActivity implements OnMapReadyCall
             @Override
             public void onClick(View v) {
                 explosionField.explode(v);
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        startActivity(new Intent(Intent.ACTION_VIEW).setData(
+                                Uri.parse("http://www.innovafest.com/")));
+                    }
+                }, 1000);
                 startActivity(new Intent(Intent.ACTION_VIEW).setData(
                         Uri.parse("http://www.innovafest.com/")));
             }
@@ -70,9 +92,14 @@ public class ContactActivity extends AppCompatActivity implements OnMapReadyCall
             @Override
             public void onClick(View v) {
                 explosionField.explode(v);
-                Intent intent = new Intent(Intent.ACTION_DIAL);
-                intent.setData(Uri.parse("tel:" + phone.getText().toString()));
-                startActivity(intent);
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        Intent intent = new Intent(Intent.ACTION_DIAL);
+                        intent.setData(Uri.parse("tel:" + phone.getText().toString()));
+                        startActivity(intent);
+                    }
+                }, 1000);
             }
         });
         email.setPaintFlags(email.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
@@ -80,14 +107,16 @@ public class ContactActivity extends AppCompatActivity implements OnMapReadyCall
             @Override
             public void onClick(View v) {
                 explosionField.explode(v);
-                Intent emailIntent = new Intent(Intent.ACTION_SEND);
-                emailIntent.setData(Uri.parse("mailto:" + email.getText().toString()));
-                emailIntent.setType("text/plain");
-                emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{email.getText().toString()});
-                startActivity(emailIntent);
-                v.setScaleX(1);
-                v.setScaleY(1);
-                v.setAlpha(1);
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        Intent emailIntent = new Intent(Intent.ACTION_SEND);
+                        emailIntent.setData(Uri.parse("mailto:" + email.getText().toString()));
+                        emailIntent.setType("text/plain");
+                        emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{email.getText().toString()});
+                        startActivity(emailIntent);
+                    }
+                }, 1000);
             }
         });
     }

@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".MainActivity">
-    <ImageView
+    <com.flaviofaria.kenburnsview.KenBurnsView
         android:scaleType="fitXY"
         android:alpha="0.4"
         android:src="@drawable/background1"

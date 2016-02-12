@@ -41,7 +41,15 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_fullscreen_gallery"
             android:theme="@style/FullscreenTheme" />
-        <activity android:name=".EventsActivity"></activity>
+        <activity android:name=".EventsActivity" />
+        <activity
+            android:name=".GuestLecturesActivity"
+            android:label="@string/title_activity_guest_lectures"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".GuestLectureActivity"
+            android:label="@string/title_activity_scrolling"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>
