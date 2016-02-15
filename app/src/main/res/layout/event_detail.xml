@@ -12,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="200dp">
         <TextView
+            android:textSize="15sp"
             android:textColor="@color/black"
             android:text="@string/about_innova"
             android:id="@+id/event_detail"

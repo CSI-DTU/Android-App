@@ -6,14 +6,18 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 
 public class PagerAdapter extends FragmentStatePagerAdapter{
     CharSequence[] tabTitles;
-    public PagerAdapter(FragmentManager fm, CharSequence[] tabTitles) {
+    CharSequence[] descriptions;
+    int[] posters;
+    public PagerAdapter(FragmentManager fm, CharSequence[] tabTitles, CharSequence[] descriptions, int[] posters) {
         super(fm);
         this.tabTitles = tabTitles;
+        this.descriptions = descriptions;
+        this.posters = posters;
     }
 
     @Override
     public Fragment getItem(int position) {
-        return new GuestLectureFragment();
+        return GuestLectureFragment.newInstance(descriptions[position], posters[position]);
     }
     @Override
     public CharSequence getPageTitle(int position) {

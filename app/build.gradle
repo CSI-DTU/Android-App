@@ -10,6 +10,7 @@ android {
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
     }
     buildTypes {
         release {
@@ -42,17 +43,13 @@ dependencies {
     compile 'com.android.support:design:23.1.1'
     compile 'com.jakewharton:butterknife:7.0.1'
     compile 'com.flaviofaria:kenburnsview:1.0.7'
-    compile 'com.codesgood:justifiedtextview:1.0.0'
     compile 'com.google.android.gms:play-services:8.4.0'
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.android.support:support-v4:23.1.1'
     compile 'com.vincentbrison.openlibraries.android:foldablelayout:0.0.1@aar'
     compile 'com.github.bumptech.glide:glide:3.6.1'
-    compile 'com.manolovn:trianglify:1.0.2'
-    compile 'com.manolovn:colorbrewer:1.0.0'
     compile 'tyrantgit:explosionfield:1.0.1'
-    compile 'com.zys:brokenview:1.0.3'
     compile 'jp.wasabeef:recyclerview-animators:2.1.0'
-    compile 'andy.ayaseruri.circularrevealactivity:lib:1.0.0'
-    compile 'com.github.ozodrukh:CircularReveal:1.1.1'
+    //    compile project(':ResideMenu')
+    compile project(':library')
 }

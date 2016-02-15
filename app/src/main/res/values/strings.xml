@@ -20,6 +20,12 @@ INNOVA’16 is anticipated to be a rejuvinating experience for students and asso
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="title_activity_guest_lectures">GuestLecturesActivity</string>
+    <string name="drawer_open">Open</string>
+    <string name="drawer_close">Close</string>
+    <string name="profile">PROFILE</string>
+    <string name="feed">FEED</string>
+    <string name="activity">ACTIVITY</string>
+    <string name="settings">SETTINGS</string>
     <string name="large_text">
         "Material is the metaphor.\n\n"
 

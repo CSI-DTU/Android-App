@@ -11,9 +11,6 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
-import com.squareup.picasso.Picasso;
-
-import andy.ayaseruri.lib.CircularRevealActivity;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.

@@ -1,0 +1,50 @@
+[
+    {
+        "outputFile": "C:\\media\\arpit\\OS\\Users\\Arpit\\AndroidStudioProjects\\Innova2016\\ResideMenu\\build\\intermediates\\res\\merged\\androidTest\\debug\\values\\values.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 47,
+                    "endOffset": 98
+                },
+                "from": {
+                    "file": "C:\\media\\arpit\\OS\\Users\\Arpit\\AndroidStudioProjects\\Innova2016\\ResideMenu\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 47,
+                        "endOffset": 98
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "outputFile": "C:\\Users\\Arpit\\AndroidStudioProjects\\Innova2016\\ResideMenu\\build\\intermediates\\res\\merged\\androidTest\\debug\\values\\values.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 47,
+                    "endOffset": 98
+                },
+                "from": {
+                    "file": "C:\\Users\\Arpit\\AndroidStudioProjects\\Innova2016\\ResideMenu\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 47,
+                        "endOffset": 98
+                    }
+                }
+            }
+        ]
+    }
+]
