@@ -1,9 +1,13 @@
 package com.dtu.csi;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.os.AsyncTask;
 import android.os.Handler;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
@@ -15,6 +19,9 @@ import android.widget.TextView;
 
 import com.flaviofaria.kenburnsview.KenBurnsView;
 import com.flaviofaria.kenburnsview.RandomTransitionGenerator;
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.common.api.Status;
 import com.yalantis.guillotine.animation.GuillotineAnimation;
 
 import butterknife.ButterKnife;
@@ -132,20 +139,21 @@ public class MainActivity extends AppCompatActivity {
                 animation.close();
             }
         });
-        final LinearLayout guestLectures = (LinearLayout) guillotineMenu.findViewById(R.id.guest_group);
-        guestLectures.setOnClickListener(new View.OnClickListener() {
+        final LinearLayout logOut = (LinearLayout) guillotineMenu.findViewById(R.id.log_out_group);
+        logOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(current_fragment != guest_fragment) {
-                    current_fragment = guest_fragment;
-                    if(currentView != null)
-                        changeTextColor(currentView);
-                    TextView label = (TextView) guestLectures.findViewById(R.id.guest_option);
-                    label.setTextColor(Color.parseColor("#60C2D3"));
-                    currentView = guestLectures;
-                    getSupportFragmentManager().beginTransaction().replace(R.id.container, new GuestLecturesFragment()).commit();
-                }
-                animation.close();
+                Auth.GoogleSignInApi.signOut(SignUpFragment.googleApiClient).setResultCallback(
+                        new ResultCallback<Status>() {
+                            @Override
+                            public void onResult(Status status) {
+                                Snackbar.make(logOut, "Signed Out!", Snackbar.LENGTH_LONG).show();
+                                SharedPreferences prefs = getSharedPreferences("creds", 0);
+                                prefs.edit().clear().apply();
+                            }
+                        });
+                startActivity(new Intent(getApplicationContext(), IntroActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+                finish();
             }
         });
         root.addView(guillotineMenu);
@@ -165,11 +173,11 @@ public class MainActivity extends AppCompatActivity {
                 label = (TextView) currentView.findViewById(R.id.gallery_option);
                 label.setTextColor(Color.WHITE);
                 break;
-            case R.id.guest_group:
-                label = (TextView) currentView.findViewById(R.id.guest_option);
+            case R.id.contact_group:
+                label = (TextView) currentView.findViewById(R.id.contact_option);
                 label.setTextColor(Color.WHITE);
                 break;
-            case R.id.contact_group:
+            case R.id.log_out:
                 label = (TextView) currentView.findViewById(R.id.contact_option);
                 label.setTextColor(Color.WHITE);
                 break;

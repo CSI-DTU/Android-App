@@ -54,5 +54,6 @@ dependencies {
     compile 'jp.wasabeef:recyclerview-animators:2.1.0'
     compile 'com.github.Yalantis:GuillotineMenu-Android:1.2'
     compile 'com.github.paolorotolo:appintro:4.1.0'
+    compile 'com.github.dexafree:materiallist:3.2.1'
 }
 apply plugin: 'com.google.gms.google-services'

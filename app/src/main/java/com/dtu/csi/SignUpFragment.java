@@ -2,6 +2,7 @@ package com.dtu.csi;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
@@ -34,7 +35,7 @@ public class SignUpFragment extends Fragment {
 
 
     private OnFragmentInteractionListener mListener;
-    private static GoogleApiClient googleApiClient;
+    public static GoogleApiClient googleApiClient;
     public static int RC_SIGN_IN;
     public SignUpFragment() {
         // Required empty public constructor
@@ -68,6 +69,8 @@ public class SignUpFragment extends Fragment {
         if(result.isSuccess()) {
             GoogleSignInAccount account = result.getSignInAccount();
             Snackbar.make(this.getLayoutInflater(null).inflate(R.layout.fragment_sign_up, null).findViewById(R.id.sign_in_button), "Signed as " + account.getEmail(), Snackbar.LENGTH_SHORT).show();
+            SharedPreferences prefs = getActivity().getSharedPreferences("creds", 0);
+            prefs.edit().putString("id", account.getId()).apply();
             startActivity(new Intent(this.getContext(), MainActivity.class));
         } else {
             Snackbar.make(this.getLayoutInflater(null).inflate(R.layout.fragment_sign_up, null).findViewById(R.id.sign_in_button), "Sign In Failed", Snackbar.LENGTH_SHORT).show();

@@ -76,17 +76,18 @@
             android:text="Gallery" />
     </LinearLayout>
     <LinearLayout
-        android:id="@+id/guest_group"
+        android:id="@+id/log_out_group"
         style="@style/LinearLayout.GuillotineItem">
 
         <ImageView
             android:layout_width="38dp"
             android:layout_height="38dp"
             style="@style/ImageView.GuillotineItem"
-            android:src="@drawable/lectures" />
+            android:src="@drawable/icn_close" />
+
         <TextView
-            android:id="@+id/guest_option"
+            android:id="@+id/log_out"
             style="@style/TextView.GuillotineItem"
-            android:text="Guest Lectures" />
+            android:text="Log Out" />
     </LinearLayout>
 </LinearLayout>
