@@ -58,6 +58,21 @@ public class SignUpFragment extends Fragment {
     }
 
     @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View v = inflater.inflate(R.layout.fragment_sign_up, container, false);
+        v.findViewById(R.id.sign_in_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(googleApiClient);
+                Log.v("", "Opening Sign In Dialog");
+                startActivityForResult(signInIntent, RC_SIGN_IN);
+            }
+        });
+        return v;
+    }
+
+    @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if(requestCode == SignUpFragment.RC_SIGN_IN) {
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
@@ -70,26 +85,16 @@ public class SignUpFragment extends Fragment {
             GoogleSignInAccount account = result.getSignInAccount();
             Snackbar.make(this.getLayoutInflater(null).inflate(R.layout.fragment_sign_up, null).findViewById(R.id.sign_in_button), "Signed as " + account.getEmail(), Snackbar.LENGTH_SHORT).show();
             SharedPreferences prefs = getActivity().getSharedPreferences("creds", 0);
-            prefs.edit().putString("id", account.getId()).apply();
+            prefs
+                    .edit()
+                    .putString("id", account.getId())
+                    .putString("email", account.getEmail())
+                    .putString("name", account.getGivenName())
+                    .apply();
             startActivity(new Intent(this.getContext(), MainActivity.class));
         } else {
             Snackbar.make(this.getLayoutInflater(null).inflate(R.layout.fragment_sign_up, null).findViewById(R.id.sign_in_button), "Sign In Failed", Snackbar.LENGTH_SHORT).show();
         }
-    }
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.fragment_sign_up, container, false);
-        v.findViewById(R.id.sign_in_button).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(googleApiClient);
-                Log.v("", "Opening Sign In Dialog");
-                startActivityForResult(signInIntent, RC_SIGN_IN);
-            }
-        });
-        return v;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
