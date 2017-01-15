@@ -1,12 +1,21 @@
 package com.dtu.csi;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
+
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInResult;
+import com.google.android.gms.common.api.GoogleApiClient;
 
 
 /**
@@ -25,11 +34,11 @@ public class SignUpFragment extends Fragment {
 
 
     private OnFragmentInteractionListener mListener;
-
+    private static GoogleApiClient googleApiClient;
+    public static int RC_SIGN_IN;
     public SignUpFragment() {
         // Required empty public constructor
     }
-
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
@@ -37,18 +46,33 @@ public class SignUpFragment extends Fragment {
      * @return A new instance of fragment SignUp.
      */
     // TODO: Rename and change types and number of parameters
-    public static SignUpFragment newInstance() {
-        SignUpFragment fragment = new SignUpFragment();
-
-        return fragment;
+    public static SignUpFragment newInstance(GoogleApiClient googleApiClient1) {
+        googleApiClient = googleApiClient1;
+        return new SignUpFragment();
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(requestCode == SignUpFragment.RC_SIGN_IN) {
+            GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
+            handleSignInResult(result);
+        }
+    }
+
+    private void handleSignInResult(GoogleSignInResult result) {
+        if(result.isSuccess()) {
+            GoogleSignInAccount account = result.getSignInAccount();
+            Snackbar.make(this.getLayoutInflater(null).inflate(R.layout.fragment_sign_up, null).findViewById(R.id.sign_in_button), "Signed as " + account.getEmail(), Snackbar.LENGTH_SHORT).show();
+            startActivity(new Intent(this.getContext(), MainActivity.class));
+        } else {
+            Snackbar.make(this.getLayoutInflater(null).inflate(R.layout.fragment_sign_up, null).findViewById(R.id.sign_in_button), "Sign In Failed", Snackbar.LENGTH_SHORT).show();
+        }
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -57,7 +81,9 @@ public class SignUpFragment extends Fragment {
         v.findViewById(R.id.sign_in_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(googleApiClient);
+                Log.v("", "Opening Sign In Dialog");
+                startActivityForResult(signInIntent, RC_SIGN_IN);
             }
         });
         return v;

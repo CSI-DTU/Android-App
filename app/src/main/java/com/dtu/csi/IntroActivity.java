@@ -1,5 +1,6 @@
 package com.dtu.csi;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
@@ -8,11 +9,14 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.github.paolorotolo.appintro.AppIntro;
 import com.github.paolorotolo.appintro.AppIntroFragment;
 import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 
@@ -29,9 +33,11 @@ public class IntroActivity extends AppIntro implements SignUpFragment.OnFragment
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
                 .build();
         addSlide(AppIntroFragment.newInstance("CSI-DTU", "This is the official Android Application for CSI-DTU", R.drawable.logo, Color.parseColor("#031D4B")));
-        addSlide(SignUpFragment.newInstance());
+        addSlide(SignUpFragment.newInstance(mGoogleApiClient));
         showSkipButton(true);
     }
+
+
 
     @Override
     public void onSkipPressed(Fragment currentFragment) {
@@ -58,6 +64,6 @@ public class IntroActivity extends AppIntro implements SignUpFragment.OnFragment
 
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-        Snackbar.make(null, "Google Sign-In Failed", Snackbar.LENGTH_SHORT);
+        Snackbar.make(this.findViewById(R.id.activity_intro), "Google Sign-In Failed", Snackbar.LENGTH_SHORT).show();
     }
 }

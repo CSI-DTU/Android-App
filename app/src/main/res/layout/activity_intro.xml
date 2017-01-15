@@ -8,6 +8,6 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.dtu.innova.innova2016.IntroActivity">
+    tools:context="com.dtu.csi.IntroActivity">
 
 </RelativeLayout>
