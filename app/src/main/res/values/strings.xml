@@ -1,10 +1,10 @@
 <resources>
-    <string name="app_name">Innova 2016</string>
+    <string name="app_name">CSI-DTU</string>
     <string name="about_button">About</string>
     <string name="developed_by">Developed By :</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_gallery__full__screen">Gallery_Full_Screen</string>
-    <string name="Arpit_Gogia">ARPIT GOGIA (2nd Year MCE)</string>
+    <string name="Arpit_Gogia">ARPIT GOGIA (3rd Year MCE)</string>
     <string name="contact_header">Contact : </string>
     <string name="contact_1">+918287024061</string>
     <string name="contact_2">convenor@innovafest.com</string>

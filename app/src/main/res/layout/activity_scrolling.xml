@@ -49,10 +49,10 @@
     <android.support.design.widget.TabLayout
         android:background="@color/black"
         app:tabTextColor="@color/white"
-        app:tabSelectedTextColor="@color/blue"
+        app:tabSelectedTextColor="@color/navy"
         android:id="@+id/tabs"
         app:tabMode="scrollable"
-        app:tabIndicatorColor="@color/blue_1"
+        app:tabIndicatorColor="@color/navy_l"
         android:layout_gravity="bottom"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"/>

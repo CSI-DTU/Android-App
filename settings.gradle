@@ -1,1 +1,1 @@
-include ':app', ':blur-behind', ':library'
+include ':app'
