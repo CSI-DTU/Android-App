@@ -78,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
         about.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                root.setBackgroundColor(Color.parseColor("#031D4B"));
                 if (current_fragment != about_fragment) {
                     current_fragment = about_fragment;
                     if(currentView != null)
@@ -94,6 +95,7 @@ public class MainActivity extends AppCompatActivity {
         events.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                root.setBackgroundColor(Color.parseColor("#031D4B"));
                 if (current_fragment != event_fragment) {
                     current_fragment = event_fragment;
                     if(currentView != null)
@@ -101,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
                     TextView label = (TextView) events.findViewById(R.id.events_option);
                     label.setTextColor(Color.parseColor("#60C2D3"));
                     currentView = events;
-                    getSupportFragmentManager().beginTransaction().replace(R.id.container, new EventsFragment()).commit();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.container, new EventsFragment2()).commit();
                 }
                 animation.close();
             }
@@ -110,6 +112,7 @@ public class MainActivity extends AppCompatActivity {
         contact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                root.setBackgroundColor(Color.parseColor("#031D4B"));
                 if(current_fragment != contact_fragment) {
                     current_fragment = contact_fragment;
                     if(currentView != null)
@@ -126,6 +129,7 @@ public class MainActivity extends AppCompatActivity {
         gallery.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                root.setBackgroundColor(Color.parseColor("#031D4B"));
                 if(current_fragment != gallery_fragment) {
                     current_fragment = gallery_fragment;
                     if(currentView != null)
@@ -142,6 +146,7 @@ public class MainActivity extends AppCompatActivity {
         logOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                root.setBackgroundColor(Color.parseColor("#031D4B"));
                 Auth.GoogleSignInApi.signOut(SignUpFragment.googleApiClient).setResultCallback(
                         new ResultCallback<Status>() {
                             @Override

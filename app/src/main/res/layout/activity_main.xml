@@ -26,17 +26,18 @@
             <TextView
                 android:textSize="20sp"
                 android:textColor="@color/white"
-                android:text="INNOVA"
+                android:text="CSI "
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
                 android:textSize="20sp"
-                android:textColor="#60C2D3"
-                android:text="  2016"
+                android:textColor="@color/navy_l"
+                android:text=" - DTU"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </android.support.v7.widget.Toolbar>
         <FrameLayout
+            android:background="@color/navy"
             android:id="@+id/container"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -48,7 +49,7 @@
                 android:layout_height="match_parent" />
             <ImageView
                 android:layout_gravity="center"
-                android:src="@drawable/logo2"
+                android:src="@drawable/logo"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content" />
         </FrameLayout>

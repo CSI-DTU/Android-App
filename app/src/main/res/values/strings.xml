@@ -117,4 +117,5 @@ INNOVA’16 is anticipated to be a rejuvinating experience for students and asso
     </string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_scrolling">ScrollingActivity</string>
+    <string name="endpoint">http://limitless-atoll-77389.herokuapp.com/</string>
 </resources>
