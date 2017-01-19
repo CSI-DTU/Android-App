@@ -1,10 +1,10 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.dtu.innova.innova2016.FullscreenGallery">
-    <ImageView
-        android:scaleType="center"
+    tools:context="com.dtu.csi.FullscreenGallery">
+    <com.diegocarloslima.byakugallery.lib.TouchImageView
+        android:scaleType="matrix"
         android:id="@+id/image_fullscreen"
         android:contentDescription="Fullscreen Image"
         android:layout_width="match_parent"
@@ -24,4 +24,4 @@
             tools:ignore="UselessParent">
         </LinearLayout>
     </FrameLayout>
-</FrameLayout>
+</RelativeLayout>

@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.squareup.picasso.Picasso;
 
+import jp.wasabeef.recyclerview.adapters.AlphaInAnimationAdapter;
 import jp.wasabeef.recyclerview.adapters.SlideInRightAnimationAdapter;
 
 public class GalleryActivity extends AppCompatActivity {
@@ -45,7 +46,7 @@ public class GalleryActivity extends AppCompatActivity {
         galleryView.setHasFixedSize(true);
         galleryView.setLayoutManager(new GridLayoutManager(getApplicationContext(), 2));
         adapter = new GalleryRecyclerAdapter(getApplicationContext(), images);
-        SlideInRightAnimationAdapter animationAdapter = new SlideInRightAnimationAdapter(adapter);
+        AlphaInAnimationAdapter animationAdapter = new AlphaInAnimationAdapter(adapter);
         animationAdapter.setDuration(1000);
         galleryView.setAdapter(animationAdapter);
     }

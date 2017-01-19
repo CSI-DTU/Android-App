@@ -15,9 +15,6 @@ import android.widget.TextView;
 
 import tyrantgit.explosionfield.ExplosionField;
 
-/**
- * Created by Arpit on 2/14/2016.
- */
 public class ContactFragment extends Fragment {
     ImageView git, facebook, website;
     TextView phone, email, map;
@@ -30,29 +27,16 @@ public class ContactFragment extends Fragment {
         git.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                explosionField.explode(v);
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        startActivity(new Intent(Intent.ACTION_VIEW).setData(
-                                Uri.parse("https://github.com/asdzxc2/InnovaApp2016.git")));
-                    }
-                }, 1000);
-
+                startActivity(new Intent(Intent.ACTION_VIEW).setData(
+                                Uri.parse("https://github.com/CSI-DTU/Android-App")));
             }
         });
         facebook = (ImageView) view.findViewById(R.id.facebook_logo);
         facebook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                explosionField.explode(v);
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        startActivity(new Intent(Intent.ACTION_VIEW).setData(
-                                Uri.parse("https://www.facebook.com/innovadtu/?fref=ts")));
-                    }
-                }, 1000);
+                startActivity(new Intent(Intent.ACTION_VIEW).setData(
+                        Uri.parse("https://www.facebook.com/dtu.csi/")));
 
             }
         });
@@ -60,16 +44,8 @@ public class ContactFragment extends Fragment {
         website.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                explosionField.explode(v);
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        startActivity(new Intent(Intent.ACTION_VIEW).setData(
-                                Uri.parse("http://www.innovafest.com/")));
-                    }
-                }, 1000);
                 startActivity(new Intent(Intent.ACTION_VIEW).setData(
-                        Uri.parse("http://www.innovafest.com/")));
+                        Uri.parse("https://csi-dtu.github.io/")));
             }
         });
         phone = (TextView) view.findViewById(R.id.phone);
@@ -78,22 +54,15 @@ public class ContactFragment extends Fragment {
         phone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                explosionField.explode(v);
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        Intent intent = new Intent(Intent.ACTION_DIAL);
-                        intent.setData(Uri.parse("tel:" + phone.getText().toString()));
-                        startActivity(intent);
-                    }
-                }, 1000);
+                Intent intent = new Intent(Intent.ACTION_DIAL);
+                intent.setData(Uri.parse("tel:" + phone.getText().toString()));
+                startActivity(intent);
             }
         });
         email.setPaintFlags(email.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
         email.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                explosionField.explode(v);
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {

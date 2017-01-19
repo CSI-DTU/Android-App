@@ -18,35 +18,12 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 
-
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link SignUpFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link SignUpFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class SignUpFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-
-    // TODO: Rename and change types of parameters
-
-
     private OnFragmentInteractionListener mListener;
     public static GoogleApiClient googleApiClient;
     public static int RC_SIGN_IN;
-    public SignUpFragment() {
-        // Required empty public constructor
-    }
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @return A new instance of fragment SignUp.
-     */
-    // TODO: Rename and change types and number of parameters
+    public SignUpFragment() {}
+
     public static SignUpFragment newInstance(GoogleApiClient googleApiClient1) {
         googleApiClient = googleApiClient1;
         return new SignUpFragment();
@@ -90,14 +67,14 @@ public class SignUpFragment extends Fragment {
                     .putString("id", account.getId())
                     .putString("email", account.getEmail())
                     .putString("name", account.getGivenName())
+                    .putBoolean("intro_done", true)
                     .apply();
-            startActivity(new Intent(this.getContext(), MainActivity.class));
+            startActivity(new Intent(this.getContext(), MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
         } else {
             Snackbar.make(this.getLayoutInflater(null).inflate(R.layout.fragment_sign_up, null).findViewById(R.id.sign_in_button), "Sign In Failed", Snackbar.LENGTH_SHORT).show();
         }
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
@@ -121,16 +98,6 @@ public class SignUpFragment extends Fragment {
         mListener = null;
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);

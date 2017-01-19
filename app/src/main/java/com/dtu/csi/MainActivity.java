@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     @Bind(R.id.bg)
     KenBurnsView background;
     int current_fragment = 0;
-    private static int about_fragment = 1, event_fragment = 2, gallery_fragment = 3, guest_fragment = 4, contact_fragment = 5;
+    private static int about_fragment = 1, event_fragment = 2, gallery_fragment = 3, profile_fragment = 4, contact_fragment = 5;
     View currentView = null;
     int[] photos = {R.drawable.background1, R.drawable.background2, R.drawable.background3, R.drawable.background4};
     @Override
@@ -103,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
                     TextView label = (TextView) events.findViewById(R.id.events_option);
                     label.setTextColor(Color.parseColor("#60C2D3"));
                     currentView = events;
-                    getSupportFragmentManager().beginTransaction().replace(R.id.container, new EventsFragment2()).commit();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.container, new EventsFragment()).commit();
                 }
                 animation.close();
             }
@@ -142,24 +142,47 @@ public class MainActivity extends AppCompatActivity {
                 animation.close();
             }
         });
-        final LinearLayout logOut = (LinearLayout) guillotineMenu.findViewById(R.id.log_out_group);
-        logOut.setOnClickListener(new View.OnClickListener() {
+        final LinearLayout profile = (LinearLayout) guillotineMenu.findViewById(R.id.profile_group);
+        profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 root.setBackgroundColor(Color.parseColor("#031D4B"));
-                Auth.GoogleSignInApi.signOut(SignUpFragment.googleApiClient).setResultCallback(
-                        new ResultCallback<Status>() {
-                            @Override
-                            public void onResult(Status status) {
-                                Snackbar.make(logOut, "Signed Out!", Snackbar.LENGTH_LONG).show();
-                                SharedPreferences prefs = getSharedPreferences("creds", 0);
-                                prefs.edit().clear().apply();
-                            }
-                        });
-                startActivity(new Intent(getApplicationContext(), IntroActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
-                finish();
+                if(current_fragment != profile_fragment) {
+                    current_fragment = profile_fragment;
+                    if(currentView != null)
+                        changeTextColor(currentView);
+                    TextView label = (TextView) profile.findViewById(R.id.profile_option);
+                    label.setTextColor(Color.parseColor("#60C2D3"));
+                    currentView = profile;
+                    getSupportFragmentManager().beginTransaction().replace(R.id.container, new ProfileFragment()).commit();
+                }
+                animation.close();
             }
         });
+
+        final LinearLayout logOut = (LinearLayout) guillotineMenu.findViewById(R.id.log_out_group);
+        SharedPreferences prefs = getSharedPreferences("creds", 0);
+        if(prefs.getString("id", null) == null)
+            logOut.setVisibility(View.INVISIBLE);
+        else {
+            logOut.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    root.setBackgroundColor(Color.parseColor("#031D4B"));
+                    Auth.GoogleSignInApi.signOut(SignUpFragment.googleApiClient).setResultCallback(
+                            new ResultCallback<Status>() {
+                                @Override
+                                public void onResult(Status status) {
+                                    Snackbar.make(logOut, "Signed Out!", Snackbar.LENGTH_LONG).show();
+                                    SharedPreferences prefs = getSharedPreferences("creds", 0);
+                                    prefs.edit().clear().apply();
+                                }
+                            });
+                    startActivity(new Intent(getApplicationContext(), IntroActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+                    finish();
+                }
+            });
+        }
         root.addView(guillotineMenu);
     }
     void changeTextColor(View currentView) {
@@ -182,7 +205,11 @@ public class MainActivity extends AppCompatActivity {
                 label.setTextColor(Color.WHITE);
                 break;
             case R.id.log_out:
-                label = (TextView) currentView.findViewById(R.id.contact_option);
+                label = (TextView) currentView.findViewById(R.id.log_out);
+                label.setTextColor(Color.WHITE);
+                break;
+            case R.id.profile_group:
+                label = (TextView) currentView.findViewById(R.id.profile_option);
                 label.setTextColor(Color.WHITE);
                 break;
         }

@@ -57,5 +57,6 @@ dependencies {
     compile 'com.github.dexafree:materiallist:3.2.1'
     compile 'com.victor:lib:1.0.4'
     compile 'com.android.volley:volley:1.0.0'
+    compile 'com.diegocarloslima:byakugallery:0.1.0@aar'
 }
 apply plugin: 'com.google.gms.google-services'

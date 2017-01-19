@@ -14,6 +14,21 @@
             android:src="@drawable/ic_menu" />
     </android.support.v7.widget.Toolbar>
 
+    <LinearLayout
+        android:id="@+id/profile_group"
+        style="@style/LinearLayout.GuillotineItem">
+        <ImageView
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            style="@style/ImageView.GuillotineItem"
+            android:src="@drawable/ic_profile" />
+
+        <TextView
+            android:id="@+id/profile_option"
+            style="@style/TextView.GuillotineItem"
+            android:text="Profile" />
+    </LinearLayout>
+
     .<LinearLayout
         android:id="@+id/about_group"
         style="@style/LinearLayout.GuillotineItem"
