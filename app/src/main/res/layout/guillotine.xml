@@ -16,7 +16,8 @@
 
     <LinearLayout
         android:id="@+id/profile_group"
-        style="@style/LinearLayout.GuillotineItem">
+        style="@style/LinearLayout.GuillotineItem"
+        android:layout_marginTop="@dimen/guillotine_medium_margin">
         <ImageView
             android:layout_width="38dp"
             android:layout_height="38dp"
@@ -29,10 +30,9 @@
             android:text="Profile" />
     </LinearLayout>
 
-    .<LinearLayout
+    <LinearLayout
         android:id="@+id/about_group"
-        style="@style/LinearLayout.GuillotineItem"
-        android:layout_marginTop="@dimen/guillotine_medium_margin">
+        style="@style/LinearLayout.GuillotineItem">
         <ImageView
             android:layout_width="38dp"
             android:layout_height="38dp"
@@ -42,6 +42,19 @@
             android:id="@+id/about_option"
             style="@style/TextView.GuillotineItem"
             android:text="About Us" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/feed_group"
+        style="@style/LinearLayout.GuillotineItem">
+        <ImageView
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            style="@style/ImageView.GuillotineItem"
+            android:src="@drawable/ic_feed" />
+        <TextView
+            android:id="@+id/feed_option"
+            style="@style/TextView.GuillotineItem"
+            android:text="Feed" />
     </LinearLayout>
 
     <LinearLayout

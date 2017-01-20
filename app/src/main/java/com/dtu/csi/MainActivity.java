@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     @Bind(R.id.bg)
     KenBurnsView background;
     int current_fragment = 0;
-    private static int about_fragment = 1, event_fragment = 2, gallery_fragment = 3, profile_fragment = 4, contact_fragment = 5;
+    private static int about_fragment = 1, event_fragment = 2, gallery_fragment = 3, profile_fragment = 4, contact_fragment = 5, feed_fragment = 6;
     View currentView = null;
     int[] photos = {R.drawable.background1, R.drawable.background2, R.drawable.background3, R.drawable.background4};
     @Override
@@ -183,6 +183,23 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
         }
+        final LinearLayout feed = (LinearLayout) guillotineMenu.findViewById(R.id.feed_group);
+        feed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                root.setBackgroundColor(Color.parseColor("#031D4B"));
+                if(current_fragment != feed_fragment) {
+                    current_fragment = feed_fragment;
+                    if(currentView != null)
+                        changeTextColor(currentView);
+                    TextView label = (TextView) feed.findViewById(R.id.feed_option);
+                    label.setTextColor(Color.parseColor("#60C2D3"));
+                    currentView = feed;
+                    getSupportFragmentManager().beginTransaction().replace(R.id.container, new NewsFeedFragment()).commit();
+                }
+                animation.close();
+            }
+        });
         root.addView(guillotineMenu);
     }
     void changeTextColor(View currentView) {
@@ -210,6 +227,10 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.profile_group:
                 label = (TextView) currentView.findViewById(R.id.profile_option);
+                label.setTextColor(Color.WHITE);
+                break;
+            case R.id.feed_group:
+                label = (TextView) currentView.findViewById(R.id.feed_option);
                 label.setTextColor(Color.WHITE);
                 break;
         }
