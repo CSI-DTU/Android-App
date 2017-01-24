@@ -1,9 +1,12 @@
 package com.dtu.csi;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Handler;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
@@ -40,6 +43,8 @@ public class MainActivity extends AppCompatActivity {
     private static int about_fragment = 1, event_fragment = 2, gallery_fragment = 3, profile_fragment = 4, contact_fragment = 5, feed_fragment = 6;
     View currentView = null;
     int[] photos = {R.drawable.background1, R.drawable.background2, R.drawable.background3, R.drawable.background4};
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

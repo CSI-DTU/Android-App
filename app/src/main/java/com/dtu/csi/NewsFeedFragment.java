@@ -1,8 +1,14 @@
 package com.dtu.csi;
 
+import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -32,6 +38,12 @@ public class NewsFeedFragment extends Fragment {
 
     public NewsFeedFragment() {
     }
+    boolean isConnected() {
+        ConnectivityManager cm =
+                (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        return activeNetwork != null && activeNetwork.isConnectedOrConnecting();
+    }
 
     public static NewsFeedFragment newInstance() {
         return new NewsFeedFragment();
@@ -49,25 +61,33 @@ public class NewsFeedFragment extends Fragment {
         spinner = (RotateLoading) layout.findViewById(R.id.spinner);
         spinner.start();
         feed_list = (MaterialListView) layout.findViewById(R.id.event_list);
-        SharedPreferences prefs = getActivity().getSharedPreferences("creds", 0);
         RequestQueue rq = Volley.newRequestQueue(this.getContext());
         String url = getString(R.string.endpoint) + "/news/0";
-        JsonArrayRequest request = new JsonArrayRequest(url,
-                new Response.Listener<JSONArray>() {
-                    @Override
-                    public void onResponse(JSONArray response) {
-                        Log.d("", response.toString());
-                        for(int i = 0 ; i < response.length() ; i++) {
-                            try {
-                                JSONObject event = response.getJSONObject(i);
-                                Card card = new Card.Builder(getContext())
-                                        .setTag("Event")
-                                        .withProvider(new CardProvider<>())
-                                        .setLayout(R.layout.material_basic_buttons_card)
-                                        .setTitle(event.getString("title"))
-                                        .setTitleResourceColor(R.color.black)
-                                        .setDescription(event.getString("description"))
-                                        .setDescriptionResourceColor(R.color.black)
+        if(!isConnected()) {
+            Snackbar.make(layout, "Not connected to the internet", Snackbar.LENGTH_LONG)
+                    .setAction("Settings", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            startActivity(new Intent(Settings.ACTION_SETTINGS));
+                        }
+                    }).show();
+        } else {
+            JsonArrayRequest request = new JsonArrayRequest(url,
+                    new Response.Listener<JSONArray>() {
+                        @Override
+                        public void onResponse(JSONArray response) {
+                            Log.d("", response.toString());
+                            for (int i = 0; i < response.length(); i++) {
+                                try {
+                                    JSONObject event = response.getJSONObject(i);
+                                    Card card = new Card.Builder(getContext())
+                                            .setTag("Event")
+                                            .withProvider(new CardProvider<>())
+                                            .setLayout(R.layout.material_basic_buttons_card)
+                                            .setTitle(event.getString("title"))
+                                            .setTitleResourceColor(R.color.black)
+                                            .setDescription(event.getString("description"))
+                                            .setDescriptionResourceColor(R.color.black)
 //                                        .setDrawable(R.drawable.dog)
 //                                        .setDrawableConfiguration(new CardProvider.OnImageConfigListener() {
 //                                            @Override
@@ -75,24 +95,25 @@ public class NewsFeedFragment extends Fragment {
 //                                                requestCreator.fit();
 //                                            }
 //                                        })
-                                        .endConfig()
-                                        .build();
-                                feed_list.getAdapter().add(card);
-                            } catch (JSONException e) {
-                                e.printStackTrace();
+                                            .endConfig()
+                                            .build();
+                                    feed_list.getAdapter().add(card);
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+
                             }
-
+                            spinner.stop();
                         }
-                        spinner.stop();
-                    }
-                }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Log.d("", error.toString());
-                    }
-        });
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Log.d("", error.toString());
+                }
+            });
 
-        rq.add(request);
+            rq.add(request);
+        }
         return layout;
     }
 }
