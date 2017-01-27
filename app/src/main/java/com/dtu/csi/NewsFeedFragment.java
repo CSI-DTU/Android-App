@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -64,13 +65,15 @@ public class NewsFeedFragment extends Fragment {
         RequestQueue rq = Volley.newRequestQueue(this.getContext());
         String url = getString(R.string.endpoint) + "/news/0";
         if(!isConnected()) {
-            Snackbar.make(layout, "Not connected to the internet", Snackbar.LENGTH_LONG)
+            Snackbar.make(container, "Not connected to the internet", Snackbar.LENGTH_LONG)
                     .setAction("Settings", new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
                             startActivity(new Intent(Settings.ACTION_SETTINGS));
                         }
-                    }).show();
+                    })
+                    .show();
+            spinner.stop();
         } else {
             JsonArrayRequest request = new JsonArrayRequest(url,
                     new Response.Listener<JSONArray>() {

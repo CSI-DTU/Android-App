@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 android {
     compileSdkVersion 25
-    buildToolsVersion '25.0.2'
+    buildToolsVersion '25.0.1'
     dexOptions {
         javaMaxHeapSize "4g"
     }
@@ -58,5 +58,6 @@ dependencies {
     compile 'com.victor:lib:1.0.4'
     compile 'com.android.volley:volley:1.0.0'
     compile 'com.diegocarloslima:byakugallery:0.1.0@aar'
+    compile 'com.github.lawloretienne:imagegallery:0.1.0'
 }
 apply plugin: 'com.google.gms.google-services'
