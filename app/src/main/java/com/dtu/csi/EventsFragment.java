@@ -150,13 +150,6 @@ public class EventsFragment extends Fragment {
                                                                     url_builder.append(URLEncoder.encode(prefs.getString("college", ""), "utf-8"));
                                                                     url_builder.append("&events=");
                                                                     url_builder.append(URLEncoder.encode(Integer.toString(event.getInt("id")), "utf-8"));
-//                                                                    final String get_url = getString(R.string.endpoint) +
-//                                                                            "/api_register" +
-//                                                                            "?full_name=" + prefs.getString("name", "") +
-//                                                                            "&contact=" + prefs.getString("phone", "") +
-//                                                                            "&email_id=" + prefs.getString("email", "") +
-//                                                                            "&college=" + prefs.getString("college", "") +
-//                                                                            "&events=" + Integer.toString(event.getInt("id"));
                                                                     final String get_url = url_builder.toString();
                                                                     Log.v("", get_url);
                                                                     new AsyncTask<JSONObject, Void, String>() {
