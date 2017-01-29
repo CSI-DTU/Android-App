@@ -138,19 +138,17 @@ public class EventsFragment extends Fragment {
                                                             }
                                                             else {
                                                                 try {
-                                                                    StringBuilder url_builder = new StringBuilder(getString(R.string.endpoint) +
-                                                                            "/api_register?");
-                                                                    url_builder.append("full_name=");
-                                                                    url_builder.append(URLEncoder.encode(prefs.getString("name", ""), "utf-8"));
-                                                                    url_builder.append("&contact=");
-                                                                    url_builder.append(URLEncoder.encode(prefs.getString("phone", ""), "utf-8"));
-                                                                    url_builder.append("&email_id=");
-                                                                    url_builder.append(URLEncoder.encode(prefs.getString("email", ""), "utf-8"));
-                                                                    url_builder.append("&college=");
-                                                                    url_builder.append(URLEncoder.encode(prefs.getString("college", ""), "utf-8"));
-                                                                    url_builder.append("&events=");
-                                                                    url_builder.append(URLEncoder.encode(Integer.toString(event.getInt("id")), "utf-8"));
-                                                                    final String get_url = url_builder.toString();
+                                                                    final String get_url = getString(R.string.endpoint) +
+                                                                            "/api_register?" + "full_name=" +
+                                                                            URLEncoder.encode(prefs.getString("name", ""), "utf-8") +
+                                                                            "&contact=" +
+                                                                            URLEncoder.encode(prefs.getString("phone", ""), "utf-8") +
+                                                                            "&email_id=" +
+                                                                            URLEncoder.encode(prefs.getString("email", ""), "utf-8") +
+                                                                            "&college=" +
+                                                                            URLEncoder.encode(prefs.getString("college", ""), "utf-8") +
+                                                                            "&events=" +
+                                                                            URLEncoder.encode(Integer.toString(event.getInt("id")), "utf-8");
                                                                     Log.v("", get_url);
                                                                     new AsyncTask<JSONObject, Void, String>() {
                                                                         final Snackbar snackbar = Snackbar.make(view, "Registering", BaseTransientBottomBar.LENGTH_INDEFINITE);
