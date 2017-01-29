@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.dtu.innova.innova2016.GalleryActivity">
+    tools:context="com.dtu.csi.MainActivity">
     <ImageView
         android:background="@drawable/background1"
         android:layout_width="match_parent"

@@ -1,12 +1,9 @@
 package com.dtu.csi;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Handler;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
@@ -206,6 +203,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         root.addView(guillotineMenu);
+        root.setBackgroundColor(Color.parseColor("#031D4B"));
+        if(current_fragment != feed_fragment) {
+            current_fragment = feed_fragment;
+            if(currentView != null)
+                changeTextColor(currentView);
+            TextView label = (TextView) feed.findViewById(R.id.feed_option);
+            label.setTextColor(Color.parseColor("#60C2D3"));
+            currentView = feed;
+            getSupportFragmentManager().beginTransaction().replace(R.id.container, new NewsFeedFragment()).commit();
+        }
     }
     void changeTextColor(View currentView) {
         TextView label;

@@ -13,9 +13,9 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 class GalleryRecyclerAdapter extends RecyclerView.Adapter<GalleryRecyclerAdapter.GalleryViewHolder> {
     private Context context;
-    private int[] images;
+    private String[] images;
     private MyClickListener myClickListener;
-    GalleryRecyclerAdapter(Context context, int[] images) {
+    GalleryRecyclerAdapter(Context context, String[] images) {
         this.context = context;
         this.images = images;
     }
@@ -33,7 +33,7 @@ class GalleryRecyclerAdapter extends RecyclerView.Adapter<GalleryRecyclerAdapter
     @Override
     public void onBindViewHolder(GalleryViewHolder holder, int position) {
         if(holder.image != null) {
-            Glide.with(context).load(images[position]).diskCacheStrategy(DiskCacheStrategy.ALL).into(holder.image);
+            Glide.with(context).load(context.getString(R.string.endpoint) + "/static/cogenesis/" + images[position] + ".jpeg").diskCacheStrategy(DiskCacheStrategy.ALL).into(holder.image);
         }
         else
             Log.v(this.getClass().getSimpleName(), "Holder Image is null");

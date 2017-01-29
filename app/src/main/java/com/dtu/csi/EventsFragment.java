@@ -65,22 +65,7 @@ public class EventsFragment extends Fragment {
         NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
         return activeNetwork != null && activeNetwork.isConnectedOrConnecting();
     }
-    private String getPostDataString(HashMap<String, String> params) throws UnsupportedEncodingException {
-        StringBuilder result = new StringBuilder();
-        boolean first = true;
-        for(Map.Entry<String, String> entry : params.entrySet()){
-            if (first)
-                first = false;
-            else
-                result.append("&");
 
-            result.append(URLEncoder.encode(entry.getKey(), "UTF-8"));
-            result.append("=");
-            result.append(URLEncoder.encode(entry.getValue(), "UTF-8"));
-        }
-
-        return result.toString();
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -144,13 +129,19 @@ public class EventsFragment extends Fragment {
                                                             }
                                                             else {
                                                                 try {
-                                                                    final String get_url = getString(R.string.endpoint) +
-                                                                            "/api_register?full_name=" +
-                                                                            prefs.getString("name", "") +
-                                                                            "&contact=" + prefs.getString("phone", "") +
-                                                                            "&email_id=" + prefs.getString("email", "") +
-                                                                            "&college=" + prefs.getString("college", "") +
-                                                                            "&events=" + Integer.toString(event.getInt("id"));
+                                                                    StringBuilder url_builder = new StringBuilder(getString(R.string.endpoint) +
+                                                                            "/api_register?");
+                                                                    url_builder.append("full_name=");
+                                                                    url_builder.append(URLEncoder.encode(prefs.getString("name", ""), "utf-8"));
+                                                                    url_builder.append("&contact=");
+                                                                    url_builder.append(URLEncoder.encode(prefs.getString("phone", ""), "utf-8"));
+                                                                    url_builder.append("&email_id=");
+                                                                    url_builder.append(URLEncoder.encode(prefs.getString("email", ""), "utf-8"));
+                                                                    url_builder.append("&college=");
+                                                                    url_builder.append(URLEncoder.encode(prefs.getString("college", ""), "utf-8"));
+                                                                    url_builder.append("&events=");
+                                                                    url_builder.append(URLEncoder.encode(Integer.toString(event.getInt("id")), "utf-8"));
+                                                                    final String get_url = url_builder.toString();
                                                                     Log.v("", get_url);
                                                                     new AsyncTask<JSONObject, Void, String>() {
                                                                         final Snackbar snackbar = Snackbar.make(view, "Registering", BaseTransientBottomBar.LENGTH_INDEFINITE);
