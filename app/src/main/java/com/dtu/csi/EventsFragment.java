@@ -157,15 +157,6 @@ public class EventsFragment extends Fragment {
                                                                                 HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                                                                                 connection.setDoInput(true);
                                                                                 connection.setDoOutput(true);
-//                                                                                HashMap<String, String> details = new HashMap<>();
-//                                                                                details.put("full_name", prefs.getString("name", null));
-//                                                                                details.put("contact", prefs.getString("phone", null));
-//                                                                                details.put("college", prefs.getString("college", null));
-//                                                                                details.put("email_id", prefs.getString("email", null));
-//                                                                                details.put("events", Integer.toString(event.getInt("id")));
-//                                                                                OutputStreamWriter osw = new OutputStreamWriter(connection.getOutputStream());
-//                                                                                osw.write(getPostDataString(details));
-//                                                                                osw.close();
                                                                                 int responseCode = connection.getResponseCode();
                                                                                 if (responseCode == HttpURLConnection.HTTP_OK) {
                                                                                     BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
@@ -228,7 +219,6 @@ public class EventsFragment extends Fragment {
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }
-
                             }
                         }
                     }, new Response.ErrorListener() {
@@ -237,12 +227,8 @@ public class EventsFragment extends Fragment {
                     Log.d("", error.toString());
                 }
             });
-
             rq.add(request);
         }
         return layout;
     }
-
-
-
 }
