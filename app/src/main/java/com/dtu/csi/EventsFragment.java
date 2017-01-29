@@ -18,13 +18,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.dexafree.materialList.card.Card;
 import com.dexafree.materialList.card.CardProvider;
@@ -38,20 +35,14 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedInputStream;
 import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
-
-import javax.net.ssl.HttpsURLConnection;
 
 public class EventsFragment extends Fragment {
     RotateLoading spinner;
@@ -120,7 +111,7 @@ public class EventsFragment extends Fragment {
                                             })
                                             .addAction(R.id.left_text_button, new TextViewAction(getContext())
                                                     .setText("Register")
-                                                    .setTextResourceColor(R.color.navy)
+                                                    .setTextResourceColor(R.color.black)
                                                     .setListener(new OnActionClickListener() {
                                                         @Override
                                                         public void onActionClicked(final View view, final Card card) {
@@ -235,6 +226,7 @@ public class EventsFragment extends Fragment {
                                             .endConfig()
                                             .build();
                                     event_list.getAdapter().add(card);
+                                    event_list.smoothScrollToPosition(0);
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }
