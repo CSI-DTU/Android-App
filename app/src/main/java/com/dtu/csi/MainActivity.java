@@ -3,21 +3,16 @@ package com.dtu.csi;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.flaviofaria.kenburnsview.KenBurnsView;
-import com.flaviofaria.kenburnsview.RandomTransitionGenerator;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
@@ -34,14 +29,9 @@ public class MainActivity extends AppCompatActivity {
     FrameLayout root;
     @Bind(R.id.content_hamburger)
     View contentHamburger;
-    @Bind(R.id.bg)
-    KenBurnsView background;
     int current_fragment = 0;
     private static int about_fragment = 1, event_fragment = 2, gallery_fragment = 3, profile_fragment = 4, contact_fragment = 5, feed_fragment = 6;
     View currentView = null;
-    int[] photos = {R.drawable.background1, R.drawable.background2, R.drawable.background3, R.drawable.background4};
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,25 +48,6 @@ public class MainActivity extends AppCompatActivity {
                 .setClosedOnStart(true)
                 .build();
         final LinearLayout about = (LinearLayout) guillotineMenu.findViewById(R.id.about_group);
-        AccelerateDecelerateInterpolator ACCELERATE_DECELERATE = new AccelerateDecelerateInterpolator();
-        RandomTransitionGenerator generator = new RandomTransitionGenerator(5000, ACCELERATE_DECELERATE);
-        background.setTransitionGenerator(generator);
-        final Handler handler = new Handler();
-        Runnable runnable = new Runnable() {
-            int i = 3;
-            public void run() {
-                background.setImageResource(photos[i]);
-                Drawable oriDrawable = background.getDrawable();
-                oriDrawable.setCallback(null);
-                System.gc();
-                i++;
-                if(i>photos.length-1){
-                    i=0;
-                }
-                handler.postDelayed(this, 7000);  //for interval...
-            }
-        };
-        handler.postDelayed(runnable, 100);
         about.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

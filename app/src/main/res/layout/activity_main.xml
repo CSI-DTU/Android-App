@@ -41,10 +41,17 @@
             android:id="@+id/container"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <com.flaviofaria.kenburnsview.KenBurnsView
-                android:alpha="0.5"
+            <!--<com.flaviofaria.kenburnsview.KenBurnsView-->
+                <!--android:alpha="0.5"-->
+                <!--android:id="@+id/bg"-->
+                <!--android:src="@drawable/background1"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent" />-->
+            <pl.droidsonroids.gif.GifImageView
                 android:id="@+id/bg"
-                android:src="@drawable/background1"
+                android:alpha="0.5"
+                android:src="@drawable/background"
+                android:scaleType="centerCrop"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
             <ImageView
