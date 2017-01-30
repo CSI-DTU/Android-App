@@ -6,8 +6,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.dtu.csi.MainActivity">
-    <ImageView
-        android:background="@drawable/background1"
+    <pl.droidsonroids.gif.GifImageView
+        android:src="@drawable/background"
+        android:scaleType="fitXY"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
     <android.support.v7.widget.CardView
