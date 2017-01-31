@@ -43,6 +43,11 @@ public class MainActivity extends AppCompatActivity {
         return activeNetwork != null && activeNetwork.isConnectedOrConnecting();
     }
     @Override
+    protected void onStart() {
+        super.onStart();
+        SignUpFragment.googleApiClient.connect();
+    }
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -155,27 +160,29 @@ public class MainActivity extends AppCompatActivity {
 
         final LinearLayout logOut = (LinearLayout) guillotineMenu.findViewById(R.id.log_out_group);
         SharedPreferences prefs = getSharedPreferences("creds", 0);
-        if(prefs.getString("id", null) == null)
-            logOut.setVisibility(View.INVISIBLE);
-        else {
-            logOut.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    root.setBackgroundColor(Color.parseColor("#031D4B"));
-                    Auth.GoogleSignInApi.signOut(SignUpFragment.googleApiClient).setResultCallback(
-                            new ResultCallback<Status>() {
-                                @Override
-                                public void onResult(Status status) {
-                                    Snackbar.make(logOut, "Signed Out!", Snackbar.LENGTH_LONG).show();
-                                    SharedPreferences prefs = getSharedPreferences("creds", 0);
-                                    prefs.edit().clear().apply();
-                                }
-                            });
-                    startActivity(new Intent(getApplicationContext(), IntroActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
-                    finish();
-                }
-            });
-        }
+//        if(prefs.getString("id", null) == null)
+//            logOut.setVisibility(View.INVISIBLE);
+//        else {
+//            logOut.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    root.setBackgroundColor(Color.parseColor("#031D4B"));
+//                    SignUpFragment.googleApiClient.connect();
+//                    Auth.GoogleSignInApi.signOut(SignUpFragment.googleApiClient).setResultCallback(
+//                            new ResultCallback<Status>() {
+//                                @Override
+//                                public void onResult(Status status) {
+//                                    Snackbar.make(logOut, "Signed Out!", Snackbar.LENGTH_LONG).show();
+//                                    SharedPreferences prefs = getSharedPreferences("creds", 0);
+//                                    prefs.edit().clear().apply();
+//                                }
+//                            });
+//                    startActivity(new Intent(getApplicationContext(), IntroActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+//                    finish();
+//                }
+//            });
+//        }
+        logOut.setVisibility(View.INVISIBLE);
         final LinearLayout feed = (LinearLayout) guillotineMenu.findViewById(R.id.feed_group);
         feed.setOnClickListener(new View.OnClickListener() {
             @Override

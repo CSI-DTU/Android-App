@@ -25,8 +25,9 @@ public class SignUpFragment extends Fragment {
     public SignUpFragment() {}
 
     public static SignUpFragment newInstance(GoogleApiClient googleApiClient1) {
+        SignUpFragment signUpFragment = new SignUpFragment();
         googleApiClient = googleApiClient1;
-        return new SignUpFragment();
+        return signUpFragment;
     }
 
     @Override
@@ -42,7 +43,6 @@ public class SignUpFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(googleApiClient);
-                Log.v("", "Opening Sign In Dialog");
                 startActivityForResult(signInIntent, RC_SIGN_IN);
             }
         });
