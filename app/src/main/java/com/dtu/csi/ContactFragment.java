@@ -12,11 +12,13 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import tyrantgit.explosionfield.ExplosionField;
 
 public class ContactFragment extends Fragment {
     ImageView git, facebook, website;
-    TextView phone, email, map;
+    TextView phone, phone2, map;
     ExplosionField explosionField;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -48,13 +50,23 @@ public class ContactFragment extends Fragment {
             }
         });
         phone = (TextView) view.findViewById(R.id.phone);
-        email = (TextView) view.findViewById(R.id.email);
         phone.setPaintFlags(phone.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
         phone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Intent.ACTION_DIAL);
-                intent.setData(Uri.parse("tel:" + phone.getText().toString()));
+                intent.setData(Uri.parse("tel:+919582796770"));
+                startActivity(intent);
+            }
+        });
+
+        phone2 = (TextView) view.findViewById(R.id.phone2);
+        phone2.setPaintFlags(phone2.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+        phone2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_DIAL);
+                intent.setData(Uri.parse("tel:++919716461636"));
                 startActivity(intent);
             }
         });

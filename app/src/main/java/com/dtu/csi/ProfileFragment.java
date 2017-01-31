@@ -7,6 +7,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -111,7 +112,8 @@ public class ProfileFragment extends Fragment {
                             .putString("college", college.getText().toString())
                             .putBoolean("all_fields", true)
                             .apply();
-                    Snackbar.make(v, "Profile Saved", BaseTransientBottomBar.LENGTH_SHORT).show();
+                    Log.v(this.getClass().getName(), Boolean.toString(prefs.getBoolean("all_fields", false)));
+                    Snackbar.make(v, "Profile Saved", Snackbar.LENGTH_SHORT).show();
                 }
             }
         });
