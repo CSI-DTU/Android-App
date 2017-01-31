@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.graphics.Paint;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,7 +20,7 @@ public class ContactFragment extends Fragment {
     ExplosionField explosionField;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.activity_contact, null);
+        View view = inflater.inflate(R.layout.fragment_contact, null);
         explosionField = ExplosionField.attach2Window(getActivity());
         git = (ImageView) view.findViewById(R.id.git_logo);
         git.setOnClickListener(new View.OnClickListener() {
@@ -57,22 +56,6 @@ public class ContactFragment extends Fragment {
                 Intent intent = new Intent(Intent.ACTION_DIAL);
                 intent.setData(Uri.parse("tel:" + phone.getText().toString()));
                 startActivity(intent);
-            }
-        });
-        email.setPaintFlags(email.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
-        email.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        Intent emailIntent = new Intent(Intent.ACTION_SEND);
-                        emailIntent.setData(Uri.parse("mailto:" + email.getText().toString()));
-                        emailIntent.setType("text/plain");
-                        emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{email.getText().toString()});
-                        startActivity(emailIntent);
-                    }
-                }, 1000);
             }
         });
         map = (TextView) view.findViewById(R.id.map);

@@ -1,9 +1,13 @@
 package com.dtu.csi;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -32,6 +36,12 @@ public class MainActivity extends AppCompatActivity {
     int current_fragment = 0;
     private static int about_fragment = 1, event_fragment = 2, gallery_fragment = 3, profile_fragment = 4, contact_fragment = 5, feed_fragment = 6;
     View currentView = null;
+    boolean isConnected() {
+        ConnectivityManager cm =
+                (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        return activeNetwork != null && activeNetwork.isConnectedOrConnecting();
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,14 +79,24 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 root.setBackgroundColor(Color.parseColor("#031D4B"));
-                if (current_fragment != event_fragment) {
-                    current_fragment = event_fragment;
-                    if(currentView != null)
-                        changeTextColor(currentView);
-                    TextView label = (TextView) events.findViewById(R.id.events_option);
-                    label.setTextColor(Color.parseColor("#60C2D3"));
-                    currentView = events;
-                    getSupportFragmentManager().beginTransaction().replace(R.id.container, new EventsFragment()).commit();
+                if(!isConnected()) {
+                    Snackbar.make(v, "Not Connected to the Internet", Snackbar.LENGTH_LONG)
+                            .setAction("Settings", new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    startActivity(new Intent(Settings.ACTION_SETTINGS));
+                                }
+                            }).show();
+                } else {
+                    if (current_fragment != event_fragment) {
+                        current_fragment = event_fragment;
+                        if (currentView != null)
+                            changeTextColor(currentView);
+                        TextView label = (TextView) events.findViewById(R.id.events_option);
+                        label.setTextColor(Color.parseColor("#60C2D3"));
+                        currentView = events;
+                        getSupportFragmentManager().beginTransaction().replace(R.id.container, new EventsFragment()).commit();
+                    }
                 }
                 animation.close();
             }
@@ -160,15 +180,25 @@ public class MainActivity extends AppCompatActivity {
         feed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                root.setBackgroundColor(Color.parseColor("#031D4B"));
-                if(current_fragment != feed_fragment) {
-                    current_fragment = feed_fragment;
-                    if(currentView != null)
-                        changeTextColor(currentView);
-                    TextView label = (TextView) feed.findViewById(R.id.feed_option);
-                    label.setTextColor(Color.parseColor("#60C2D3"));
-                    currentView = feed;
-                    getSupportFragmentManager().beginTransaction().replace(R.id.container, new NewsFeedFragment()).commit();
+                if(!isConnected()) {
+                    Snackbar.make(v, "Not Connected to the Internet", Snackbar.LENGTH_LONG)
+                            .setAction("Settings", new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    startActivity(new Intent(Settings.ACTION_SETTINGS));
+                                }
+                            }).show();
+                } else {
+                    root.setBackgroundColor(Color.parseColor("#031D4B"));
+                    if (current_fragment != feed_fragment) {
+                        current_fragment = feed_fragment;
+                        if (currentView != null)
+                            changeTextColor(currentView);
+                        TextView label = (TextView) feed.findViewById(R.id.feed_option);
+                        label.setTextColor(Color.parseColor("#60C2D3"));
+                        currentView = feed;
+                        getSupportFragmentManager().beginTransaction().replace(R.id.container, new NewsFeedFragment()).commit();
+                    }
                 }
                 animation.close();
             }

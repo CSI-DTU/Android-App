@@ -22,7 +22,7 @@ public class GalleryFragment extends Fragment {
     GalleryRecyclerAdapter adapter;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.activity_gallery, null);
+        View view = inflater.inflate(R.layout.fragment_gallery, null);
         galleryView = (RecyclerView) view.findViewById(R.id.gallery_recycler);
         galleryView.setHasFixedSize(true);
         galleryView.setLayoutManager(new GridLayoutManager(getContext(), 2));
