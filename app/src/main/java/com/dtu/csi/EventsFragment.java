@@ -131,6 +131,7 @@ public class EventsFragment extends Fragment {
                                                                         }).show();
                                                             } else {
                                                                 try {
+                                                                    view.setClickable(false);
                                                                     final String get_url = getString(R.string.endpoint) +
                                                                             "/api_register?" + "full_name=" +
                                                                             URLEncoder.encode(prefs.getString("name", ""), "utf-8") +
@@ -188,8 +189,11 @@ public class EventsFragment extends Fragment {
                                                                                 Snackbar.make(view, "Successful", Snackbar.LENGTH_SHORT).show();
                                                                                 registered_events.add(finalEvent_id);
                                                                                 prefs.edit().putStringSet("events", registered_events).apply();
-                                                                            } else
+                                                                                view.setClickable(false);
+                                                                            } else {
                                                                                 Snackbar.make(view, "Failed", Snackbar.LENGTH_SHORT).show();
+                                                                                view.setClickable(true);
+                                                                            }
                                                                         }
                                                                     }.execute();
                                                                 } catch (Exception e) {
