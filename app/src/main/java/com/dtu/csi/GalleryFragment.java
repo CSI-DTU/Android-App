@@ -13,11 +13,9 @@ import jp.wasabeef.recyclerview.adapters.SlideInRightAnimationAdapter;
 
 public class GalleryFragment extends Fragment {
     RecyclerView galleryView;
-//    int[] images = {R.drawable.a, R.drawable.b, R.drawable.c, R.drawable.d,
-//            R.drawable.e, R.drawable.f, R.drawable.g, R.drawable.h, R.drawable.i,
-//            R.drawable.j, R.drawable.k, R.drawable.l, R.drawable.m, R.drawable.n, R.drawable.o};
     String[] images = {
-        "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l"
+        "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q",
+            "r", "s", "t", "u", "v", "w", "x", "y", "z", "aa", "ab", "ac", "ad", "ae"
     };
     GalleryRecyclerAdapter adapter;
     @Override
