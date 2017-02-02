@@ -2,19 +2,16 @@ package com.dtu.csi;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -23,10 +20,7 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.dexafree.materialList.card.Card;
 import com.dexafree.materialList.card.CardProvider;
-import com.dexafree.materialList.card.OnActionClickListener;
-import com.dexafree.materialList.card.action.TextViewAction;
 import com.dexafree.materialList.view.MaterialListView;
-import com.squareup.picasso.RequestCreator;
 import com.victor.loading.rotate.RotateLoading;
 
 import org.json.JSONArray;
@@ -58,7 +52,8 @@ public class NewsFeedFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View layout = inflater.inflate(R.layout.fragment_events_fragment2, container, false);
+        View layout = inflater.inflate(R.layout.fragment_events, container, false);
+        // Using the same layout fragment for events and news, because why not :)
         spinner = (RotateLoading) layout.findViewById(R.id.spinner);
         spinner.start();
         feed_list = (MaterialListView) layout.findViewById(R.id.event_list);

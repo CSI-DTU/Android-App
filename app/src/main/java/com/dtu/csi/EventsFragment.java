@@ -37,14 +37,10 @@ import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
 
 public class EventsFragment extends Fragment {
     RotateLoading spinner;
@@ -71,7 +67,7 @@ public class EventsFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        final View layout = inflater.inflate(R.layout.fragment_events_fragment2, container, false);
+        final View layout = inflater.inflate(R.layout.fragment_events, container, false);
         spinner = (RotateLoading) layout.findViewById(R.id.spinner);
         spinner.start();
         event_list = (MaterialListView) layout.findViewById(R.id.event_list);

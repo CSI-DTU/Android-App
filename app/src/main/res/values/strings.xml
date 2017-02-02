@@ -16,7 +16,7 @@
         your creative and technical side in a way you have never done before. The name “COGENESIS” is symbolic of
         amalgamation of rebirth and revival of the dauntless spirit and never subsiding enthusiasm of the people
         working behind this event. After the magnificent success of its previous installment, COGENESIS
-        2016 is one of the most eagerly awaited techfest among the engineering youth of the country.
+        2017 is one of the most eagerly awaited techfest among the engineering youth of the country.
     </string>
     <string name="title_activity_fullscreen_gallery">FullscreenGallery</string>
     <string name="drawer_open">Open</string>
@@ -29,7 +29,4 @@
     <string name="title_activity_scrolling">ScrollingActivity</string>
     <string name="endpoint">http://limitless-atoll-77389.herokuapp.com</string>
     <string name="title_activity_fullscreen">FullscreenActivity</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
