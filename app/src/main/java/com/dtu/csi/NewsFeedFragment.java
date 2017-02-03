@@ -99,8 +99,8 @@ public class NewsFeedFragment extends Fragment {
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }
-
                             }
+                            feed_list.smoothScrollToPosition(0);
                             spinner.stop();
                         }
                     }, new Response.ErrorListener() {
